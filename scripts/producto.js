@@ -13,8 +13,8 @@ export class Producto {
 
     }
     infoHtml(){
-        return `<h6>Producto</h6> <p><b>Codigo:</b>${this.codigo} <b>Nombre:</b>${this.nombre}
-        <b>Cantidad:</b>${this.cantidad}
+        return `<h3>Producto</h3> <p><b>Codigo:</b>${this.codigo} | <b>Nombre:</b>${this.nombre} |
+        <b>Cantidad:</b>${this.cantidad} |
         <b>Costo:</b>${this.costo}</p><br>`
     }
 }

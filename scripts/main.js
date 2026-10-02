@@ -6,22 +6,21 @@ import { Inventario } from "./inventario.js";
 
 const inventario = new Inventario();
 const botonAdd = document.getElementById("addProd");
-const añadirPrimero = document.getElementById('addProdIn');
 const btnListar = document.getElementById("lisInv");
 const output = document.getElementById("output");
 const btnDelete = document.getElementById("delProd");
 const btnBuscar = document.getElementById("buscProd");
 const btnExtPrim = document.getElementById("extProd");
-const btnInsertar = document.getElementById("insProd");
-const btnLisInv = document.getElementById("invInver")
+const btnExtUlt = document.getElementById("extUltProd");
+const btnLisInv = document.getElementById("invInver");
 let codProd;
-let posicion;
+
 
 /*FUNCION PARA RECOGER Y VALIDAR LOS DATOS DE LOS INPUTS E
  INSTANCIAR EL PRODUCTO */
 function recDatosProd(){
     let producto;
-    let codigo = document.getElementById('txtCode').value;
+    let codigo = Number(document.getElementById('txtCode').value);
     let nombre = document.getElementById('txtNom').value;
     let cantidad = document.getElementById('txtCan').value;
     let costo = document.getElementById('txtCost').value;
@@ -46,18 +45,8 @@ function inputVacio(){
 // Añadir producto nuevo //
 botonAdd.addEventListener("click",(e)=>{
     e.preventDefault();
-    recDatosProd();
     output.innerHTML = inventario.agregar(recDatosProd());  
     inputVacio(); 
-});
-
-
-// Añadir producto al inicio //
-añadirPrimero.addEventListener("click",(e)=>{
-    e.preventDefault();
-    recDatosProd();
-    output.innerHTML = inventario.agregarInicio(recDatosProd());
-    inputVacio();
 });
 
 // Listar Inventario //
@@ -69,7 +58,7 @@ btnListar.addEventListener("click",(e)=>{
 // Eliminar Producto del Inventario //
 btnDelete.addEventListener("click",(e)=>{
     e.preventDefault();
-    codProd = document.getElementById("txtCode").value;
+    codProd = Number(document.getElementById("txtCode").value);
     output.innerHTML = inventario.eliminar(codProd);
     inputVacio();
 });
@@ -77,7 +66,7 @@ btnDelete.addEventListener("click",(e)=>{
 // Buscar Producto //
 btnBuscar.addEventListener("click",(e)=>{
     e.preventDefault();
-    codProd = document.getElementById("txtCode").value;
+    codProd = Number(document.getElementById("txtCode").value);
     output.innerHTML = inventario.buscar(codProd); 
     inputVacio();
 });
@@ -89,12 +78,11 @@ btnExtPrim.addEventListener("click",(e)=>{
     output.innerHTML = inventario.extraerPrimero();
 })
 
-// Insertar el Producto //
-btnInsertar.addEventListener("click",(e)=>{
+// Extraer Ultimo Producto //
+
+btnExtUlt.addEventListener("click",(e)=>{
     e.preventDefault();
-    posicion = document.getElementById("txtPos").value;
-    output.innerHTML = inventario.insertar(recDatosProd(),posicion);
-    inputVacio();
+    output.innerHTML = inventario.extraerUltimo();
 });
 
 // Listar producto Inverso //
