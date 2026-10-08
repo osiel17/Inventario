@@ -70,7 +70,7 @@ btnListar.addEventListener("click",(e)=>{
 btnDelete.addEventListener("click",(e)=>{
     e.preventDefault();
     codProd = document.getElementById("txtCode").value;
-    output.innerHTML = inventario.eliminar(codProd);
+    output.innerHTML = inventario.eliminar(codProd,inventario.primero);
     inputVacio();
 });
 
@@ -78,7 +78,7 @@ btnDelete.addEventListener("click",(e)=>{
 btnBuscar.addEventListener("click",(e)=>{
     e.preventDefault();
     codProd = document.getElementById("txtCode").value;
-    output.innerHTML = inventario.buscar(codProd); 
+    output.innerHTML = inventario.buscar(codProd,inventario.primero); 
     inputVacio();
 });
 
@@ -93,7 +93,7 @@ btnExtPrim.addEventListener("click",(e)=>{
 btnInsertar.addEventListener("click",(e)=>{
     e.preventDefault();
     posicion = document.getElementById("txtPos").value;
-    output.innerHTML = inventario.insertar(recDatosProd(),posicion);
+    output.innerHTML = inventario.insertar(recDatosProd(),Number(posicion));
     inputVacio();
 });
 
