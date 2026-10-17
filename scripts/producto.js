@@ -7,6 +7,7 @@ export class Producto {
         this.cantidad = cantidad;
         this.costo = costo;
         this.siguiente = null;
+        this.anterior = null;
     }
     info(){
         return `Codigo:${this.codigo} | Nombre: ${this.nombre} |

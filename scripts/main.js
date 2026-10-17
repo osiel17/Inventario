@@ -6,32 +6,36 @@ import { Inventario } from "./inventario.js";
 
 const inventario = new Inventario();
 const botonAdd = document.getElementById("addProd");
-const añadirPrimero = document.getElementById('addProdIn');
+//const añadirPrimero = document.getElementById('addProdIn');
 const btnListar = document.getElementById("lisInv");
 const output = document.getElementById("output");
 const btnDelete = document.getElementById("delProd");
 const btnBuscar = document.getElementById("buscProd");
 const btnExtPrim = document.getElementById("extProd");
-const btnInsertar = document.getElementById("insProd");
+//const btnInsertar = document.getElementById("insProd");
 const btnLisInv = document.getElementById("invInver")
 let codProd;
-let posicion;
+//let posicion;
 
 /*FUNCION PARA RECOGER Y VALIDAR LOS DATOS DE LOS INPUTS E
  INSTANCIAR EL PRODUCTO */
 function recDatosProd(){
     let producto;
-    let codigo = document.getElementById('txtCode').value;
     let nombre = document.getElementById('txtNom').value;
     let cantidad = document.getElementById('txtCan').value;
     let costo = document.getElementById('txtCost').value;
+    let codigoTexto = document.getElementById('txtCode').value;
+    let codigo = Number(codigoTexto);
 
-    if(codigo === "" || nombre === "" || cantidad=== "" || costo === ""){
+    if (codigoTexto.trim() === "" || nombre.trim() === "" ||
+    cantidad.trim() === "" || costo.trim() === "") {
         output.innerHTML = `Llena los campos correspondientes`;
-    } else {
-    producto = new Producto (codigo,nombre,cantidad,costo);
+        return null;
     }
-    return producto
+    else {
+        producto = new Producto (codigo,nombre,cantidad,costo);
+    }
+        return producto
 }
 
 // FUNCION PARA COLOCAR LOS INPUTS VACIOS //
@@ -46,19 +50,20 @@ function inputVacio(){
 // Añadir producto nuevo //
 botonAdd.addEventListener("click",(e)=>{
     e.preventDefault();
-    recDatosProd();
     output.innerHTML = inventario.agregar(recDatosProd());  
     inputVacio(); 
 });
 
 
 // Añadir producto al inicio //
+/*
 añadirPrimero.addEventListener("click",(e)=>{
     e.preventDefault();
     recDatosProd();
     output.innerHTML = inventario.agregarInicio(recDatosProd());
     inputVacio();
 });
+*/
 
 // Listar Inventario //
 btnListar.addEventListener("click",(e)=>{
@@ -70,14 +75,14 @@ btnListar.addEventListener("click",(e)=>{
 btnDelete.addEventListener("click",(e)=>{
     e.preventDefault();
     codProd = document.getElementById("txtCode").value;
-    output.innerHTML = inventario.eliminar(codProd,inventario.primero);
+    output.innerHTML = inventario.eliminar(codProd);
     inputVacio();
 });
 
 // Buscar Producto //
 btnBuscar.addEventListener("click",(e)=>{
     e.preventDefault();
-    codProd = document.getElementById("txtCode").value;
+    codProd = Number(document.getElementById("txtCode").value);
     output.innerHTML = inventario.buscar(codProd,inventario.primero); 
     inputVacio();
 });
@@ -90,12 +95,14 @@ btnExtPrim.addEventListener("click",(e)=>{
 })
 
 // Insertar el Producto //
+/*
 btnInsertar.addEventListener("click",(e)=>{
     e.preventDefault();
     posicion = document.getElementById("txtPos").value;
     output.innerHTML = inventario.insertar(recDatosProd(),Number(posicion));
     inputVacio();
 });
+*/
 
 // Listar producto Inverso //
 
