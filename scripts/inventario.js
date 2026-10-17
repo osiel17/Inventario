@@ -130,6 +130,30 @@ eliminar(codigo) {
             return `${aux.nombre} ha sido extraído`;
         }
     }
+
+      extraerUltimo() {
+        let aux;
+        let nodo = this.primero;
+        if(this.primero === null){
+            return `No hay productos en el inventario`
+        } 
+        if(this.primero.siguiente === null) {
+            aux = this.primero;
+            this.primero = null;
+            return `Se ha extraido el producto ${aux.nombre}`;
+        }
+        while(nodo){
+            if(nodo.siguiente === null){
+                aux = nodo;
+                nodo = nodo.anterior;
+                nodo.siguiente.anterior=null;
+                nodo.siguiente = null;
+            }
+            nodo = nodo.siguiente;
+        }
+        return `Se ha extraido el producto ${aux.nombre}`
+       
+    }
    
     listarInverso(){
         if (this.primero === null) {

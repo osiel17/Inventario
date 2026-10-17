@@ -12,6 +12,7 @@ const output = document.getElementById("output");
 const btnDelete = document.getElementById("delProd");
 const btnBuscar = document.getElementById("buscProd");
 const btnExtPrim = document.getElementById("extProd");
+const btnExtUlt = document.getElementById("extProdUlt");
 //const btnInsertar = document.getElementById("insProd");
 const btnLisInv = document.getElementById("invInver")
 let codProd;
@@ -92,7 +93,14 @@ btnBuscar.addEventListener("click",(e)=>{
 btnExtPrim.addEventListener("click",(e)=>{
     e.preventDefault();
     output.innerHTML = inventario.extraerPrimero();
-})
+});
+
+// Extraer Ultimo Producto //
+
+btnExtUlt.addEventListener("click",(e)=>{
+    e.preventDefault();
+    output.innerHTML = inventario.extraerUltimo();
+});
 
 // Insertar el Producto //
 /*
