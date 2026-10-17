@@ -148,6 +148,7 @@ eliminar(codigo) {
                 nodo = nodo.anterior;
                 nodo.siguiente.anterior=null;
                 nodo.siguiente = null;
+                break;
             }
             nodo = nodo.siguiente;
         }
